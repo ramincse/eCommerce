@@ -17,6 +17,9 @@
         <!-- Style-->
         <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}" />
         <link rel="stylesheet" href="{{ asset('backend/css/skin_color.css') }}" />
+
+        <!-- Sweet Alert JS -->
+        <script src="{{ asset('backend/js/download/sweetalert2@11.js') }}"></script>
     </head>
 
     <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
@@ -41,14 +44,27 @@
         </div>
         <!-- ./wrapper -->
 
-        <!-- Vendor JS -->
+        <!-- Vendor JS -->        
         <script src="{{ asset('backend/js/vendors.min.js') }}"></script>
         <script src="{{ asset('../assets/icons/feather-icons/feather.min.js') }}"></script>
         <script src="{{ asset('../assets/vendor_components/easypiechart/dist/jquery.easypiechart.js') }}"></script>
         <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/irregular-data-series.js') }}"></script>
         <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
+        <!-- Data Table JS -->
+        <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
+        <script src="{{ asset('backend/js/pages/data-table.js') }}"></script>
+        
         <!-- Toastr JS -->
         <script src="{{ asset('backend/js/toastr.min.js') }}"></script>
+
+        <!-- Tags Input JS -->
+        <script src="{{ asset('../assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js') }}"></script>
+
+        <!-- CK Editors JS -->
+        <script src="{{ asset('../assets/vendor_components/ckeditor/ckeditor.js') }}"></script>
+	    <script src="{{ asset('../assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js') }}"></script>
+	    <script src="{{ asset('backend/js/pages/editor.js') }}"></script>
+
         <!-- Sunny Admin App -->
         <script src="{{ asset('backend/js/template.js') }}"></script>
         <script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
@@ -73,6 +89,33 @@
                     break; 
                 }
             @endif 
+        </script>
+        <!-- Sweet Alert JS -->
+        <script type="text/javascript">
+            $(function(){
+                $(document).on('click', '#delete', function(e){
+                    //e.preventDefault();
+                    var link = $(this).attr('href');
+        
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                            )
+                        }
+                    });
+                });
+            });
         </script>
     </body>
 </html>

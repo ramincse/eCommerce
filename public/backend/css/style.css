@@ -24039,3 +24039,6 @@ img.away, img.busy, img.offline, img.online {
   z-index: -1; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+table th, table td{text-align: center;}
